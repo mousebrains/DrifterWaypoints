@@ -1,0 +1,31 @@
+#
+# This file defines a polygon pattern in meters, with the drifter at the origin.
+#
+# The syntax is a YAML file
+#
+# normalization is an overall scaling factor to multiply polygon vertices by
+# rotation_angle is an angle to rotate the pattern about the origin by in degrees
+# qRotate is a boolean, true or false, if the pattern is to be rotated so
+#         +x is in the same direction as the drifter's velocity vector
+#
+# polygon is an array of points, [x,y], in meters
+#
+# Each line is a corner of the polygon. The last point is closed to the first.
+# When the glider surfaces it will fly to the closest point in time in the
+# pattern then continue in the order sequenced.
+#
+# Slocum's have a maximum of 7 waypoints, so the polygon will be limited to 7
+# vertices
+#
+# A butterfly pattern
+
+normalization: 1000 # multiply all points by this value, 1m->1km
+rotation_angle: 45 # Rotate pattern by this many degrees in the Cartesian plane
+qRotate: true # Rotate the pattern along the drifter's velocity vector,
+                 # +x in the cartesian plan is parallel to the velocity vector
+polygon:
+ # x, y
+ - [ 1, 1] # northeast point
+ - [-1,-1] # southwest point
+ - [-1, 1] # northwest point
+ - [ 1,-1] # southeast point
